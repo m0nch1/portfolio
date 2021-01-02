@@ -10,31 +10,31 @@ export default function BlogId({ blog }) {
         }}
       />
     </main>
-  );
+  )
 }
 
 export const getStaticPaths = async () => {
   const key = {
-    headers: { "X-API-KEY": process.env.API_KEY },
-  };
-  const data = await fetch("https://m0nch1.microcms.io/api/v1/blog", key)
+    headers: { 'X-API-KEY': process.env.API_KEY },
+  }
+  const data = await fetch('https://m0nch1.microcms.io/api/v1/blog', key)
     .then((res) => res.json())
-    .catch(() => null);
-  const paths = data.contents.map((content) => `/blog/${content.id}`);
-  return { paths, fallback: false };
-};
+    .catch(() => null)
+  const paths = data.contents.map((content) => `/blog/${content.id}`)
+  return { paths, fallback: false }
+}
 
 export const getStaticProps = async (context) => {
-  const id = context.params.id;
+  const id = context.params.id
   const key = {
-    headers: { "X-API-KEY": process.env.API_KEY },
-  };
-  const data = await fetch("https://m0nch1.microcms.io/api/v1/blog/" + id, key)
+    headers: { 'X-API-KEY': process.env.API_KEY },
+  }
+  const data = await fetch('https://m0nch1.microcms.io/api/v1/blog/' + id, key)
     .then((res) => res.json())
-    .catch(() => null);
+    .catch(() => null)
   return {
     props: {
       blog: data,
     },
-  };
-};
+  }
+}
