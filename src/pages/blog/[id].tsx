@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { BlogItem } from '../types';
+import { BlogItem } from '../../../types';
 
 export default function BlogId({ blog }: { blog: BlogItem }): JSX.Element {
   return (

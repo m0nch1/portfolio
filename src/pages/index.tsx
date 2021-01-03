@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { BlogItem } from './types';
+import { BlogItem } from '../../types';
 
 export default function Home({ blog }: { blog: BlogItem[] }): JSX.Element {
   return (
