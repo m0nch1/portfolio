@@ -1,7 +1,10 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { BlogItem } from '../../../types';
 
-export default function BlogId({ blog }: { blog: BlogItem }): JSX.Element {
+type PathProps = { paths: string; fallback: string };
+type Props = { blog: BlogItem };
+
+export default function BlogId({ blog }: Props): JSX.Element {
   return (
     <main>
       <h1>{blog.title}</h1>
@@ -16,7 +19,7 @@ export default function BlogId({ blog }: { blog: BlogItem }): JSX.Element {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<PathProps> = async () => {
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },
   };
@@ -27,7 +30,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const id = context.params.id;
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },

@@ -2,7 +2,9 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { BlogItem } from '../../types';
 
-export default function Home({ blog }: { blog: BlogItem[] }): JSX.Element {
+type Props = { blog: BlogItem[] };
+
+export default function Home({ blog }: Props): JSX.Element {
   return (
     <div>
       <ul>
@@ -18,7 +20,7 @@ export default function Home({ blog }: { blog: BlogItem[] }): JSX.Element {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },
   };
