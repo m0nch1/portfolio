@@ -6,7 +6,10 @@ export default function Header(): JSX.Element {
       <div className="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div className="md:flex items-center">
           <Link href="/">
-            <a className="block">ここにLogo</a>
+            <a className="flex items-center">
+              <img src="/images/spring.png" alt="logo" className="h-10 w-10 self-center" />
+              <span>m0nch1</span>
+            </a>
           </Link>
         </div>
 
