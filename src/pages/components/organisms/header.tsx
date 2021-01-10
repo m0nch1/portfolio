@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header(): JSX.Element {
   return (
@@ -7,8 +8,8 @@ export default function Header(): JSX.Element {
         <div className="md:flex items-center">
           <Link href="/">
             <a className="flex items-center">
-              <img src="/images/spring.png" alt="logo" className="h-10 w-10 self-center" />
-              <span>m0nch1</span>
+              <Image src="/images/spring.png" alt="logo" width="32" height="32" />
+              <span className="ml-4">m0nch1</span>
             </a>
           </Link>
         </div>

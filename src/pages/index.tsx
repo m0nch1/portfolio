@@ -1,35 +1,7 @@
-import { GetStaticProps } from 'next';
-import Link from 'next/link';
-import { BlogItem } from '../../types';
-
-type Props = { blog: BlogItem[] };
-
-export default function Home({ blog }: Props): JSX.Element {
+export default function Home(): JSX.Element {
   return (
     <div>
-      <ul>
-        {blog.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              <a>{blog.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h2>トップページです</h2>
     </div>
   );
 }
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  };
-  const data = await fetch('https://m0nch1.microcms.io/api/v1/blog', key)
-    .then((res) => res.json())
-    .catch(() => null);
-  return {
-    props: {
-      blog: data.contents,
-    },
-  };
-};
